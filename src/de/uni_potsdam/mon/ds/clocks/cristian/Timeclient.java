@@ -10,7 +10,7 @@ public class Timeclient implements Runnable {
 	private Clock clock;
 	private VSDatagramSocket clientSocket;
 	private String name;
-	private final static long delta = 1000;
+	private final static long delta = 1000; //maximum delta between two clocks
 	private final static double maximal_drift_rate = 0.0d; // TODO: Correct me
 
 	public Timeclient(Clock clock, InetSocketAddress address, String name) {

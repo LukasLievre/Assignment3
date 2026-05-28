@@ -13,7 +13,7 @@ public class Clock extends Thread {
 
 	public Clock(String name, long incrementTime, double drift) {
 		super("Clock " + name); //allocates a new thread object
-		counter = 0L;
+		counter = 0L; //own time of the clock
 		this.incrementTime = incrementTime; //time between two clock ticks (in main(), it is 50 ms)
 		this.drift = drift;
 		this.name = name;
@@ -22,7 +22,7 @@ public class Clock extends Thread {
 
 	public synchronized long getTime() {
 		// TODO: Implement/modify me!
-		return (counter*incrementTime) + (long) (counter*(drift+1));
+		return counter;
 	}
 
 	public synchronized void setTime(long time) {
@@ -33,8 +33,9 @@ public class Clock extends Thread {
 	public void run() {
 		// TODO: Implement me!
 		//this method imitates the time
+		long timeDrift = (long)(incrementTime*(drift+1));
 		while (true) {
-			counter +=1;
+			counter +=timeDrift;
 			try {
 				Clock.sleep(incrementTime);
 			} catch (InterruptedException ignored) {
