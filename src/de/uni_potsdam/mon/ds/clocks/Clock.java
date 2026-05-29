@@ -22,7 +22,7 @@ public class Clock extends Thread {
 
 	public synchronized long getTime() {
 		// TODO: Implement/modify me!
-		return counter;
+		return this.counter;
 	}
 
 	public synchronized void setTime(long time) {
@@ -35,7 +35,7 @@ public class Clock extends Thread {
 		//this method imitates the time
 		long timeDrift = (long)(incrementTime*(drift+1));
 		while (true) {
-			counter +=timeDrift;
+			this.counter +=timeDrift;
 			try {
 				Clock.sleep(incrementTime);
 			} catch (InterruptedException ignored) {

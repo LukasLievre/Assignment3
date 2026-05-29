@@ -1,5 +1,6 @@
 package de.uni_potsdam.mon.ds.clocks.cristian;
 
+import java.net.DatagramPacket;
 import java.net.InetSocketAddress;
 
 import de.uni_potsdam.mon.ds.clocks.Clock;
@@ -17,5 +18,14 @@ public class Timeserver implements Runnable {
 
 	public void run() {
 		// TODO: Implement me
+		while (true) {
+
+				try {
+					DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
+				} catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+		}
 	}
 }
